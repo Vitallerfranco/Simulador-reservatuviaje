@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Reservas | TravelAR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- iconos y mas -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/estilos.css">
+    <!-- JS -->
+    <script src="../scripts/logicareserva.js" defer></script>
+    <script src="../scripts/mis-reservas.js" defer></script>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="container nav-wrapper">
+            <div class="logo">
+                <i class="fa-solid fa-earth-americas"></i>
+                Travel<span>AR</span>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="../index.html">Inicio</a>
+                <a href="../index.html#destinos">Destinos</a>
+                <a href="../index.html#beneficios">Beneficios</a>
+                <a href="../index.html#contacto">Contacto</a>
+            </nav>
+
+            <button id="abrirCarrito" class="btn-nav">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="contadorCarrito">0</span>
+            </button>
+        </div>
+    </header>
+
+    <section class="mis-reservas-container container">
+        
+        <div class="mis-reservas-header">
+            <h1>
+                <i class="fa-solid fa-calendar-check"></i>
+                Mis Reservas
+            </h1>
+            <p class="subtitulo">Visualiza y gestiona todas tus viajes confirmados</p>
+        </div>
+
+        <div id="historialReservas" class="historial-reservas">
+        </div>
+
+        <div class="mis-reservas-footer">
+            <a href="../index.html" class="btn-primary">
+                <i class="fa-solid fa-plus"></i>
+                Planificar nuevo viaje
+            </a>
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 TravelAR. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

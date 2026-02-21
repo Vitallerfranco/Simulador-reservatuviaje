@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "nombre": "Bariloche",
+    "pais": "Argentina",
+    "ciudad": "San Carlos de Bariloche",
+    "descripcion": "Destino patagónico con lagos cristalinos, montañas y actividades de aventura todo el año.",
+    "categoria": "Naturaleza y aventura",
+    "duracionDias": 7,
+    "precioBase": 450000,
+    "moneda": "ARS",
+    "rating": 4.8,
+    "opiniones": 1243,
+    "imagenPrincipal": "assets/bariloche.jpg",
+    "incluye": [
+      "Vuelo ida y vuelta",
+      "Traslado aeropuerto-hotel",
+      "Hotel 4 estrellas",
+      "Desayuno incluido",
+      "Excursión Circuito Chico",
+      "Asistencia 24/7"
+    ],
+    "noIncluye": [
+      "Seguro médico",
+      "Excursiones opcionales",
+      "Gastos personales"
+    ],
+    "extrasDisponibles": [
+      {
+        "nombre": "Seguro médico premium",
+        "precio": 35000
+      },
+      {
+        "nombre": "Excursión a Cerro Tronador",
+        "precio": 55000
+      },
+      {
+        "nombre": "Upgrade habitación vista lago",
+        "precio": 40000
+      }
+    ],
+    "climaPromedio": {
+      "verano": "18°C",
+      "invierno": "4°C"
+    },
+    "coordenadas": {
+      "lat": -41.1335,
+      "lng": -71.3103
+    },
+    "cuposDisponibles": 18
+  },
+  {
+    "id": 2,
+    "nombre": "Mendoza",
+    "pais": "Argentina",
+    "ciudad": "Mendoza Capital",
+    "descripcion": "Experiencia enológica y paisajes andinos con excursiones a bodegas y montaña.",
+    "categoria": "Vino y montaña",
+    "duracionDias": 5,
+    "precioBase": 380000,
+    "moneda": "ARS",
+    "rating": 4.7,
+    "opiniones": 987,
+    "imagenPrincipal": "assets/mendoza.jpg",
+    "incluye": [
+      "Vuelo ida y vuelta",
+      "Hotel 4 estrellas",
+      "Desayuno buffet",
+      "Tour por bodegas",
+      "Visita al Aconcagua"
+    ],
+    "noIncluye": [
+      "Almuerzos",
+      "Seguro de viaje"
+    ],
+    "extrasDisponibles": [
+      {
+        "nombre": "Degustación premium",
+        "precio": 28000
+      },
+      {
+        "nombre": "Rafting en Potrerillos",
+        "precio": 45000
+      }
+    ],
+    "climaPromedio": {
+      "verano": "30°C",
+      "invierno": "8°C"
+    },
+    "coordenadas": {
+      "lat": -32.8895,
+      "lng": -68.8458
+    },
+    "cuposDisponibles": 24
+  },
+  {
+    "id": 3,
+    "nombre": "Cancún",
+    "pais": "México",
+    "ciudad": "Cancún",
+    "descripcion": "Destino paradisíaco con playas de arena blanca y resorts todo incluido.",
+    "categoria": "Playa internacional",
+    "duracionDias": 8,
+    "precioBase": 1200000,
+    "moneda": "ARS",
+    "rating": 4.9,
+    "opiniones": 2145,
+    "imagenPrincipal": "assets/cancun.jpg",
+    "galeria": [
+    ],
+    "incluye": [
+      "Vuelo internacional",
+      "Traslado aeropuerto-hotel",
+      "Resort 5 estrellas all inclusive",
+      "Actividades acuáticas",
+      "Asistencia en destino"
+    ],
+    "noIncluye": [
+      "Excursiones externas",
+      "Seguro médico internacional"
+    ],
+    "extrasDisponibles": [
+      {
+        "nombre": "Excursión a Chichén Itzá",
+        "precio": 120000
+      },
+      {
+        "nombre": "Isla Mujeres VIP",
+        "precio": 95000
+      }
+    ],
+    "climaPromedio": {
+      "verano": "32°C",
+      "invierno": "26°C"
+    },
+    "coordenadas": {
+      "lat": 21.1619,
+      "lng": -86.8515
+    },
+    "cuposDisponibles": 12
+  }
+]

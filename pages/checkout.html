@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TravelAR | Checkout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- iconos y mas -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/estilos.css">
+    <!-- JS -->
+    <script src="../scripts/logicareserva.js" defer></script>
+    <script src="../scripts/checkout.js" defer></script>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="container nav-wrapper">
+            <div class="logo">
+                <i class="fa-solid fa-earth-americas"></i>
+                Travel<span>AR</span>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="../index.html">Inicio</a>
+                <a href="../index.html#destinos">Destinos</a>
+                <a href="../index.html#beneficios">Beneficios</a>
+                <a href="../index.html#contacto">Contacto</a>
+            </nav>
+
+            <button id="abrirCarrito" class="btn-nav">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="contadorCarrito">0</span>
+            </button>
+        </div>
+    </header>
+
+    <section class="checkout-container container">
+        <div class="checkout-header">
+            <h1>Finaliza tu compra</h1>
+            <ol class="checkout-steps">
+                <li class="step active" data-step="resumen">1. Resumen</li>
+                <li class="step" data-step="datos">2. Datos</li>
+                <li class="step" data-step="pago">3. Pago</li>
+            </ol>
+        </div>
+
+        <div class="checkout-content">
+
+            <div class="checkout-form">
+                
+
+                <div class="checkout-step active" id="stepResumen">
+                    <h2>Resumen de tu reserva</h2>
+                    <div id="resumenReservas" class="resumen-reservas">
+
+                    </div>
+                    <button type="button" class="btn-primary" onclick="irAlPaso('datos')">
+                        Continuar →
+                    </button>
+                    <button type="button" class="btn-secondary" onclick="volverAlHero()">
+                        Editar reserva
+                    </button>
+                </div>
+
+                <div class="checkout-step" id="stepDatos">
+                    <h2>Datos del Pasajero</h2>
+                    <form id="formDatosCheckout">
+                        <div class="form-group">
+                            <label for="checkoutNombre">Nombre Completo *</label>
+                            <input type="text" id="checkoutNombre" required placeholder="Ej: Juan García">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="checkoutEmail">Email *</label>
+                            <input type="email" id="checkoutEmail" required placeholder="tu@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="checkoutDNI">DNI *</label>
+                            <input type="text" id="checkoutDNI" required placeholder="12345678">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="checkoutTelefono">Teléfono *</label>
+                            <input type="tel" id="checkoutTelefono" required placeholder="+54 11 1234-5678">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="checkoutPais">País *</label>
+                            <input type="text" id="checkoutPais" required placeholder="Argentina" value="Argentina">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="checkoutCiudad">Ciudad *</label>
+                            <input type="text" id="checkoutCiudad" required placeholder="Buenos Aires">
+                        </div>
+
+                        <button type="submit" class="btn-primary">
+                            Continuar →
+                        </button>
+                    </form>
+                    <button type="button" class="btn-secondary" onclick="irAlPaso('resumen')">
+                        ← Volver
+                    </button>
+                </div>
+
+                <div class="checkout-step" id="stepPago">
+                    <h2>Método de Pago</h2>
+                    <form id="formPago">
+                        <div class="form-group">
+                            <label for="metodoPago">Seleccionar método de pago *</label>
+                            <select id="metodoPago" required>
+                                <option value="">-- Elegir opción --</option>
+                                <option value="tarjeta-credito">Tarjeta de Crédito</option>
+                                <option value="tarjeta-debito">Tarjeta de Débito</option>
+                                <option value="transferencia">Transferencia Bancaria</option>
+                                <option value="billetera">Billetera Virtual</option>
+                            </select>
+                        </div>
+
+                        <div id="datosTarjeta" style="display: none;">
+                            <div class="form-group">
+                                <label for="numeroTarjeta">Número de Tarjeta (16 dígitos) *</label>
+                                <input type="text" id="numeroTarjeta" placeholder="1234 5678 9012 3456" maxlength="19">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="vencimiento">Vencimiento *</label>
+                                    <input type="text" id="vencimiento" placeholder="MM/YY" maxlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv">CVV *</label>
+                                    <input type="text" id="cvv" placeholder="123" maxlength="3">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="titularTarjeta">Nombre del Titular *</label>
+                                <input type="text" id="titularTarjeta" placeholder="JUAN GARCIA">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cuotas">Cantidad de cuotas *</label>
+                                <select id="cuotas">
+                                    <option value="1">1 cuota sin interés</option>
+                                    <option value="3">3 cuotas sin interés</option>
+                                    <option value="6">6 cuotas sin interés</option>
+                                    <option value="12">12 cuotas sin interés</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="datosTransferencia" style="display: none;">
+                            <div class="alert-info">
+                                <p><strong>Datos bancarios para transferencia:</strong></p>
+                                <p>Banco: Banco Nación Argentina</p>
+                                <p>CBU: 0170070976000012345678</p>
+                                <p>CUIT: 20-12345678-9</p>
+                                <p>Concepto: TravelAR + Tu Número de Reserva</p>
+                            </div>
+                        </div>
+
+                        <label class="checkbox-group">
+                            <input type="checkbox" id="aceptoTerminos" required>
+                            <span>Acepto los términos y condiciones</span>
+                        </label>
+
+                        <button type="submit" class="btn-primary btn-large">
+                            Finalizar Compra
+                        </button>
+                    </form>
+                    <button type="button" class="btn-secondary" onclick="irAlPaso('datos')">
+                        ← Volver
+                    </button>
+                </div>
+
+            </div>
+
+            <aside class="checkout-resumen-side">
+                <div class="sticky-resumen">
+                    <h3>Resumen de costos</h3>
+                    <div id="resumenLateral" class="resumen-lateral">
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+    </section>
+
+    <footer id="contacto" class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h3>Travel<span>AR</span></h3>
+                <p>Explorá el mundo con experiencias únicas, planificación inteligente y atención personalizada.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4>Explorar</h4>
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="../index.html#destinos">Destinos</a></li>
+                    <li><a href="../index.html#beneficios">Beneficios</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#">Viajes personalizados</a></li>
+                    <li><a href="#">Paquetes nacionales</a></li>
+                    <li><a href="#">Seguro de viaje</a></li>
+                    <li><a href="#">Asistencia 24/7</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Contacto</h4>
+                <p>Email: info@travelar.com</p>
+                <p>Tel: +54 11 1234-5678</p>
+                <p>Buenos Aires, Argentina</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2025 TravelAR — Todos los derechos reservados
+        </div>
+    </footer>
+
+</body>
+
+</html>

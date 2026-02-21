@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TravelAR | Confirmación de Reserva</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- iconos y mas -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/estilos.css">
+    <!-- JS -->
+    <script src="../scripts/logicareserva.js" defer></script>
+    <script src="../scripts/confirmacion.js" defer></script>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="container nav-wrapper">
+            <div class="logo">
+                <i class="fa-solid fa-earth-americas"></i>
+                Travel<span>AR</span>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="../index.html">Inicio</a>
+                <a href="../index.html#destinos">Destinos</a>
+                <a href="../index.html#beneficios">Beneficios</a>
+                <a href="../index.html#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="confirmacion-container container">
+        
+        <div class="confirmacion-header">
+            <div class="icono-exito">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h1>¡Tu reserva ha sido confirmada!</h1>
+            <p class="subtitulo">Hemos recibido tu pago. Pronto recibirás un email con los detalles de tu viaje.</p>
+        </div>
+
+        <div class="confirmacion-content">
+            <section class="confirmacion-seccion">
+                <h2>Datos de tu Confirmación</h2>
+                <div class="confirmacion-datos">
+                    <div class="dato-item">
+                        <span class="dato-label">Número de Reserva:</span>
+                        <span class="dato-valor" id="confirmNumeroReserva">TR-250001-000001</span>
+                    </div>
+                    <div class="dato-item">
+                        <span class="dato-label">Código de Confirmación:</span>
+                        <span class="dato-valor" id="confirmCodigo">CONF-1234567890-ABC123</span>
+                    </div>
+                    <div class="dato-item">
+                        <span class="dato-label">Fecha de Emisión:</span>
+                        <span class="dato-valor" id="confirmFecha">21 de febrero de 2025</span>
+                    </div>
+                    <div class="dato-item">
+                        <span class="dato-label">Email de confirmación:</span>
+                        <span class="dato-valor" id="confirmEmail">usuario@email.com</span>
+                    </div>
+                </div>
+            </section>
+            <section class="confirmacion-seccion">
+                <h2>Datos del Pasajero</h2>
+                <div class="confirmacion-pasajero">
+                    <p><strong>Nombre:</strong> <span id="confirmPasajeroNombre">Juan García</span></p>
+                    <p><strong>DNI:</strong> <span id="confirmPasajeroDNI">12345678</span></p>
+                    <p><strong>Teléfono:</strong> <span id="confirmPasajeroTelefono">+54 11 1234-5678</span></p>
+                    <p><strong>Ciudad:</strong> <span id="confirmPasajeroCiudad">Buenos Aires</span></p>
+                </div>
+            </section>
+
+            <section class="confirmacion-seccion">
+                <h2>Detalles de tus Reservas</h2>
+                <div id="confirmacionReservas" class="reservas-confirmadas">
+
+                </div>
+            </section>
+            <section class="confirmacion-seccion">
+                <h2>Resumen Financiero</h2>
+                <div class="confirmacion-total">
+                    <div class="total-item">
+                        <span>Subtotal</span>
+                        <span id="confirmSubtotal">$0</span>
+                    </div>
+                    <div class="total-item">
+                        <span>Impuestos</span>
+                        <span id="confirmImpuestos">$0</span>
+                    </div>
+                    <div class="total-item total-final">
+                        <span>Total Pagado</span>
+                        <span id="confirmTotal">$0</span>
+                    </div>
+                </div>
+            </section>
+            <section class="confirmacion-seccion">
+                <h2>¿Qué sucede ahora?</h2>
+                <div class="pasos-confirmacion">
+                    <div class="paso-confirmacion">
+                        <div class="numero-paso">1</div>
+                        <h4>Email de Confirmación</h4>
+                        <p>Recibirás un email en <strong id="emailPasajero">usuario@email.com</strong> con todos los detalles de tu reserva en los próximos minutos.</p>
+                    </div>
+                    <div class="paso-confirmacion">
+                        <div class="numero-paso">2</div>
+                        <h4>Acceso al Portal</h4>
+                        <p>Podrás acceder a tu reserva en cualquier momento desde tu cuenta en TravelAR.</p>
+                    </div>
+                    <div class="paso-confirmacion">
+                        <div class="numero-paso">3</div>
+                        <h4>Asistencia 24/7</h4>
+                        <p>Nuestro equipo está disponible en <strong>+54 11 1234-5678</strong> o <strong>info@travelar.com</strong></p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="confirmacion-acciones">
+                <button onclick="descargarPDF()" class="btn-primary">
+                    <i class="fa-solid fa-download"></i> Descargar PDF
+                </button>
+                <button onclick="window.print()" class="btn-secondary">
+                    <i class="fa-solid fa-print"></i> Imprimir
+                </button>
+                <button onclick="volverAlInicio()" class="btn-secondary">
+                    <i class="fa-solid fa-home"></i> Volver al Inicio
+                </button>
+            </div>
+
+        </div>
+
+        <div class="confirmacion-notas">
+            <h3>Información Importante</h3>
+            <ul>
+                <li>Guarda tu número de reserva <strong id="numeroReservaRepetido">TR-250001-000001</strong> para cualquier consulta o cambio.</li>
+                <li>Si necesitas cancelar o modificar tu reserva, contáctanos dentro de 24 horas para obtener tu reembolso.</li>
+                <li>Los detalles del vuelo/transporte llegarán 48 horas antes de tu viaje.</li>
+                <li>Revisa nuestros <a href="#">términos y condiciones</a> para más información.</li>
+            </ul>
+        </div>
+
+    </section>
+
+    <footer id="contacto" class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h3>Travel<span>AR</span></h3>
+                <p>Explorá el mundo con experiencias únicas, planificación inteligente y atención personalizada.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4>Explorar</h4>
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="../index.html#destinos">Destinos</a></li>
+                    <li><a href="../index.html#beneficios">Beneficios</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#">Viajes personalizados</a></li>
+                    <li><a href="#">Paquetes nacionales</a></li>
+                    <li><a href="#">Seguro de viaje</a></li>
+                    <li><a href="#">Asistencia 24/7</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Contacto</h4>
+                <p>Email: info@travelar.com</p>
+                <p>Tel: +54 11 1234-5678</p>
+                <p>Buenos Aires, Argentina</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2025 TravelAR — Todos los derechos reservados
+        </div>
+    </footer>
+
+</body>
+
+</html>

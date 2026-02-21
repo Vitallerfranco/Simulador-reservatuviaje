@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TravelAR | Tu Carrito</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- iconos y mas -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/estilos.css">
+    <!-- JS -->
+    <script src="../scripts/logicareserva.js" defer></script>
+    <script src="../scripts/carrito.js" defer></script>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="container nav-wrapper">
+            <div class="logo">
+                <i class="fa-solid fa-earth-americas"></i>
+                Travel<span>AR</span>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="../index.html">Inicio</a>
+                <a href="../index.html#destinos">Destinos</a>
+                <a href="../index.html#beneficios">Beneficios</a>
+                <a href="../index.html#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="carrito-container container">
+        
+        <div class="carrito-header">
+            <h1>Tu Carrito de Reservas</h1>
+            <p class="subtitulo">Revisa y gestiona tus reservas antes de continuar con el pago</p>
+        </div>
+
+        <div class="carrito-content">
+
+            <div class="carrito-items-section">
+                <div id="carritoItems" class="carrito-items">
+
+                </div>
+            </div>
+
+
+            <aside class="carrito-resumen-section">
+                <div class="resumen-carrito sticky">
+                    <h3>Resumen de tu carrito</h3>
+                    <div id="resumenCarrito" class="resumen-carrito-content">
+
+                    </div>
+                    <button id="btnContinuarCheckout" class="btn-primary btn-block" disabled>
+                        Continuar al Checkout
+                    </button>
+                    <button onclick="volverAlHero()" class="btn-secondary btn-block">
+                        Seguir comprando
+                    </button>
+                </div>
+            </aside>
+
+        </div>
+
+    </section>
+
+    <footer id="contacto" class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h3>Travel<span>AR</span></h3>
+                <p>Explorá el mundo con experiencias únicas, planificación inteligente y atención personalizada.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4>Explorar</h4>
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="../index.html#destinos">Destinos</a></li>
+                    <li><a href="../index.html#beneficios">Beneficios</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#">Viajes personalizados</a></li>
+                    <li><a href="#">Paquetes nacionales</a></li>
+                    <li><a href="#">Seguro de viaje</a></li>
+                    <li><a href="#">Asistencia 24/7</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Contacto</h4>
+                <p>Email: info@travelar.com</p>
+                <p>Tel: +54 11 1234-5678</p>
+                <p>Buenos Aires, Argentina</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2025 TravelAR — Todos los derechos reservados
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TravelAR | Planificá tu próximo destino</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- iconos y mas -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- JS -->
+    <script src="./scripts/logicareserva.js" defer></script>
+    <script src="./scripts/app.js" defer></script>
+    <script src="./scripts/animaciones.js" defer></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="container nav-wrapper">
+
+            <div class="logo">
+                <i class="fa-solid fa-earth-americas"></i>
+                Travel<span>AR</span>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="#inicio">Inicio</a>
+                <a href="#destinos">Destinos</a>
+                <a href="#beneficios">Beneficios</a>
+                <a href="#opiniones">Opiniones</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+
+<button id="abrirCarrito" class="btn-nav">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span id="contadorCarrito">0</span>
+</button>
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- hero  -->
+<section class="hero-premium">
+
+    <div class="hero-bg"></div>
+
+    <div class="container hero-wrapper">
+
+        <div class="hero-left">
+            <h1>
+                Descubrí el mundo con
+                <span>TravelAR</span>
+            </h1>
+
+            <p>
+                Armá tu viaje ideal en minutos. Compará destinos,
+                simulá presupuestos y reservá con confianza.
+            </p>
+        </div>
+
+        <div class="hero-right glass-card">
+            <h3>Simulá tu viaje</h3>
+
+            <form id="formHero" class="hero-mini-form">
+
+                <select id="heroDestino" required>
+                    <option value="">Elegí destino</option>
+                </select>
+
+                <input type="date" id="heroFechaCheckin" placeholder="Check-in" required>
+
+                <input type="date" id="heroFechaCheckout" placeholder="Check-out" required>
+
+                <select id="heroPersonas" required>
+                    <option value="">Cantidad personas</option>
+                    <option value="1">1 Persona</option>
+                    <option value="2">2 Personas</option>
+                    <option value="3">3 Personas</option>
+                    <option value="4">4 Personas</option>
+                    <option value="5">5 Personas</option>
+                    <option value="6">6+ Personas</option>
+                </select>
+
+                <select id="heroCategoria" required>
+                    <option value="">Categoría alojamiento</option>
+                    <option value="economico">Económico</option>
+                    <option value="premium">Premium</option>
+                    <option value="lujo">Lujo</option>
+                </select>
+
+                <input type="text" id="heroCodigoDescuento" placeholder="Código descuento (opcional)">
+
+                <button type="submit" id="btnSimularHero" class="btn-primary">
+                    Simular viaje
+                </button>
+
+            </form>
+
+            <div id="infoDestinoHero" class="destino-info"></div>
+
+        </div>
+    </div>
+</section>
+
+<div id="carritoDrawer" class="drawer">
+    <div class="drawer-content">
+        <div class="drawer-header">
+            <h3>Tu carrito</h3>
+            <button id="cerrarDrawer" class="btn-close">✕</button>
+        </div>
+        <div id="carritoItems" class="drawer-body">
+        </div>
+        <div class="drawer-footer">
+            <div class="drawer-total">
+                <strong>Total:</strong> <span id="carritoTotal">$0</span>
+            </div>
+            <button id="irCheckout" class="btn-primary" disabled>Ir a Pagar</button>
+        </div>
+    </div>
+</div>
+    <section class="section-how" id="como-funciona">
+        <div class="container how-container">
+            <div class="how-header">
+                <span class="section-badge">Proceso simple</span>
+                <h2>¿Cómo funciona Travel<span>AR</span>?</h2>
+                <p>Planificá tu viaje en minutos con nuestro simulador inteligente. Rápido, claro y sin complicaciones.
+                </p>
+            </div>
+            <div class="how-steps">
+                <div class="how-step-card">
+                    <div class="how-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h3>Elegí destino</h3>
+                    <p>Seleccioná entre destinos nacionales e internacionales disponibles en nuestra plataforma.</p>
+                </div>
+                <div class="how-step-card">
+                    <div class="how-icon">
+                        <i class="fa-solid fa-calculator"></i>
+                    </div>
+                    <h3>Simulá tu presupuesto</h3>
+                    <p>Ingresá fechas, cantidad de personas y preferencias para obtener un estimado real.</p>
+                </div>
+                <div class="how-step-card">
+                    <div class="how-icon">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+                    <h3>Compará opciones</h3>
+                    <p>Visualizá distintas alternativas de alojamiento y transporte adaptadas a tu presupuesto.</p>
+                </div>
+
+                <div class="how-step-card">
+                    <div class="how-icon">
+                        <i class="fa-solid fa-credit-card"></i>
+                    </div>
+                    <h3>Reservá online</h3>
+                    <p>Confirmá tu viaje de forma segura y recibí asistencia personalizada 24/7.</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <section class="section-destinos" id="destinos">
+        <div class="container destinos-container">
+            <div class="destinos-header">
+                <span class="section-badge">Destinos populares</span>
+                <h2>Explorá nuestros <span>destinos destacados</span></h2>
+                <p>Elegí tu próxima aventura y simulá tu viaje en segundos.</p>
+            </div>
+            <div class="destinos-grid">
+                <div class="destino-card">
+                    <div class="destino-img">
+                        <img src="./assets/colonentrerios.jpg" alt="Colón Entre Ríos">
+                        <div class="destino-overlay"></div>
+                        <div class="destino-precio">Desde $85.000</div>
+                    </div>
+                    <div class="destino-info">
+                        <h3>Colón</h3>
+                        <p>Termas, naturaleza y relax en Entre Ríos.</p>
+                        <a href="#" class="btn-primary destino-btn">Simular viaje</a>
+                    </div>
+                </div>
+                <div class="destino-card">
+                    <div class="destino-img">
+                        <img src="./assets/mendoza argentina.webp" alt="Mendoza Argentina">
+                        <div class="destino-overlay"></div>
+                        <div class="destino-precio">Desde $120.000</div>
+                    </div>
+                    <div class="destino-info">
+                        <h3>Mendoza</h3>
+                        <p>Montañas, vino y aventura al pie de los Andes.</p>
+                        <a href="#" class="btn-primary destino-btn">Simular viaje</a>
+                    </div>
+                </div>
+                <div class="destino-card">
+                    <div class="destino-img">
+                        <img src="./assets/Costa-Argentina-1920-4.jpg" alt="Costa Atlántica">
+                        <div class="destino-overlay"></div>
+                        <div class="destino-precio">Desde $95.000</div>
+                    </div>
+                    <div class="destino-info">
+                        <h3>Costa Atlántica</h3>
+                        <p>Playas, verano y diversión en familia.</p>
+                        <a href="#" class="btn-primary destino-btn">Simular viaje</a>
+                    </div>
+                </div>
+                <div class="destino-card">
+                    <div class="destino-img">
+                        <img src="./assets/1920_bariloche.jpg" alt="Bariloche Patagonia">
+                        <div class="destino-overlay"></div>
+                        <div class="destino-precio">Desde $140.000</div>
+                    </div>
+                    <div class="destino-info">
+                        <h3>Bariloche</h3>
+                        <p>Lagos cristalinos y paisajes patagónicos únicos.</p>
+                        <a href="#" class="btn-primary destino-btn">Simular viaje</a>
+                    </div>
+                </div>
+                <div class="destino-card">
+                    <div class="destino-img">
+                        <img src="./assets/cataratas-del-iguazu.webp" alt="Cataratas del Iguazú">
+                        <div class="destino-overlay"></div>
+                        <div class="destino-precio">Desde $135.000</div>
+                    </div>
+                    <div class="destino-info">
+                        <h3>Iguazú</h3>
+                        <p>Maravillas naturales y aventura selvática.</p>
+                        <a href="#" class="btn-primary destino-btn">Simular viaje</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- section de comentarios de la gente -->
+
+
+    <section class="seccion-mate">
+        <div class="contenedor-pampa">
+
+            <div class="encabezado-obelisco efecto-messi">
+                <h2>Experiencias que nos definen</h2>
+                <p>Más de 1.200 viajeros confiaron en nosotros para vivir momentos inolvidables.</p>
+            </div>
+
+            <div class="tarjeta-tilcara efecto-messi">
+
+                <div class="historia-iguazu activa-maradona">
+                    <p class="texto-calafate">
+                        Fue la mejor experiencia de nuestra vida. Todo estuvo perfectamente organizado y superó nuestras
+                        expectativas.
+                    </p>
+                    <div class="estrellas-cordoba">★★★★★</div>
+                    <div class="cliente-rosario">
+                        <img src="./assets/FOTO DE PERFIL.jpg" alt="cliente">
+                        <div>
+                            <h4>Franco Vitaller</h4>
+                            <span>Viaje a Italia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="historia-iguazu">
+                    <p class="texto-calafate">
+                        Atención impecable y destinos increíbles. Sin dudas volveríamos a viajar con ellos.
+                    </p>
+                    <div class="estrellas-cordoba">★★★★★</div>
+                    <div class="cliente-rosario">
+                        <img src="https://i.pravatar.cc/100?img=12" alt="cliente">
+                        <div>
+                            <h4>Carlos Méndez</h4>
+                            <span>Viaje a Grecia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="historia-iguazu">
+                    <p class="texto-calafate">
+                        Todo fluyó perfecto. Desde la reserva hasta el regreso, fue una experiencia premium.
+                    </p>
+                    <div class="estrellas-cordoba">★★★★★</div>
+                    <div class="cliente-rosario">
+                        <img src="https://i.pravatar.cc/100?img=45" alt="cliente">
+                        <div>
+                            <h4>Lucía Fernández</h4>
+                            <span>Viaje a Japón</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="puntos-lanus">
+                    <span class="punto-bondi activo-maradona"></span>
+                    <span class="punto-bondi"></span>
+                    <span class="punto-bondi"></span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="hero-section">
+
+        <div class="parallax-bg"></div>
+        <canvas id="particles"></canvas>
+        <div class="overlay"></div>
+
+        <div class="hero-content">
+
+            <h1 class="glitch" data-text="HOT SALE MENDOZA">
+                HOT SALE MENDOZA
+            </h1>
+
+            <p class="subtitle">
+                ¡OFERTAS IMPERDIBLES POR TIEMPO LIMITADO!
+            </p>
+
+            <div class="countdown">
+                <div class="time-box">
+                    <h2 id="days">00</h2>
+                    <span>DÍAS</span>
+                </div>
+                <div class="time-box">
+                    <h2 id="hours">00</h2>
+                    <span>HORAS</span>
+                </div>
+                <div class="time-box">
+                    <h2 id="minutes">00</h2>
+                    <span>MIN</span>
+                </div>
+                <div class="time-box">
+                    <h2 id="seconds">00</h2>
+                    <span>SEG</span>
+                </div>
+            </div>
+
+            <a href="#" class="cta-button">
+                RESERVAR AHORA
+            </a>
+
+        </div>
+    </section>
+    <footer id="contacto" class="footer">
+        <div class="container footer-grid">
+
+            <!-- Marca -->
+            <div class="footer-brand">
+                <h3>Travel<span>AR</span></h3>
+                <p>Explorá el mundo con experiencias únicas, planificación inteligente y atención personalizada.</p>
+
+                <div class="footer-social">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <!-- Enlaces -->
+            <div>
+                <h4>Explorar</h4>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#destinos">Destinos</a></li>
+                    <li><a href="#beneficios">Beneficios</a></li>
+                    <li><a href="#opiniones">Opiniones</a></li>
+                </ul>
+            </div>
+
+            <!-- Servicios -->
+            <div>
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#">Viajes personalizados</a></li>
+                    <li><a href="#">Paquetes nacionales</a></li>
+                    <li><a href="#">Seguro de viaje</a></li>
+                    <li><a href="#">Asistencia 24/7</a></li>
+                </ul>
+            </div>
+
+            <!-- Contacto -->
+            <div>
+                <h4>Contacto</h4>
+                <p>Email: info@travelar.com</p>
+                <p>Tel: +54 11 1234-5678</p>
+                <p>Buenos Aires, Argentina</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2025 TravelAR — Todos los derechos reservados Desarrollado por Francovitaller by:VitaDev
+        </div>
+    </footer>
+
+</body>
+
+</html>

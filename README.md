@@ -7,9 +7,9 @@ El sistema permite visualizar destinos, seleccionar paquetes y simular el proces
 
 🚀 Demo
 
-()
+(https://vitallerfranco.github.io/Simulador-reservatuviaje/)
 
-https://tuusuario.github.io/travelar
+https://github.com/Vitallerfranco
 🛠️ Stack Tecnológico
 
 HTML5 – Estructura semántica

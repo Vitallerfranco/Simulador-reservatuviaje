@@ -8,10 +8,8 @@ let confirmacion = null;
 // INICIALIZACIÓN
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    cargarConfirmacion();
-    mostrarDatos();
-});
+cargarConfirmacion();
+mostrarDatos();
 
 
 // CARGAR CONFIRMACIÓN

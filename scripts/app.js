@@ -26,11 +26,9 @@ const CODIGOS_DESCUENTO = {
 // INICIALIZACIÓN
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    cargarDestinos();
-    inicializarEventos();
-    actualizarCarrito();
-});
+cargarDestinos();
+inicializarEventos();
+actualizarCarrito();
 
 
 // CARGAR DESTINOS
@@ -156,13 +154,15 @@ function simularYMostrarReserva() {
     const codigoDesc = document.getElementById('heroCodigoDescuento').value.toUpperCase();
 
     // Validaciones
-    if (!idDestino || !checkin || !checkout || !personas || !categoria) {
+    if (!idDestino || !personas || !categoria) {
         mostrarError('Por favor completa todos los campos');
         return;
     }
 
-    if (new Date(checkin) >= new Date(checkout)) {
-        mostrarError('La fecha de salida debe ser posterior a la entrada');
+    // Validar fechas
+    const validacionFechas = validarFechas(checkin, checkout);
+    if (!validacionFechas.valido) {
+        mostrarError(validacionFechas.mensaje);
         return;
     }
 
@@ -181,11 +181,6 @@ function simularYMostrarReserva() {
     const diastranscurridos = Math.ceil(
         (new Date(checkout) - new Date(checkin)) / (1000 * 60 * 60 * 24)
     );
-
-    if (diastranscurridos <= 0) {
-        mostrarError('Las fechas no son válidas');
-        return;
-    }
 
     // Calcular precio
     let precioTotal = destino.precioBase * personas * MULTIPLICADORES[categoria];
@@ -403,12 +398,22 @@ function actualizarCarrito() {
 }
 
 function eliminarDelCarrito(index) {
-    if (confirm('¿Eliminar esta reserva?')) {
-        carritoLocal.splice(index, 1);
-        guardarCarritoEnStorage();
-        actualizarCarrito();
-        mostrarSuccessMessage('Reserva eliminada');
-    }
+    Swal.fire({
+        title: '¿Eliminar esta reserva?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            carritoLocal.splice(index, 1);
+            guardarCarritoEnStorage();
+            actualizarCarrito();
+            mostrarSuccessMessage('Reserva eliminada');
+        }
+    });
 }
 
 function guardarCarritoEnStorage() {

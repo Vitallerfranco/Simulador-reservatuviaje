@@ -8,12 +8,10 @@ let carrito = [];
 // INICIALIZACIÓN
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    cargarCarrito();
-    mostrarItems();
-    mostrarResumen();
-    inicializarEventos();
-});
+cargarCarrito();
+mostrarItems();
+mostrarResumen();
+inicializarEventos();
 
 
 // CARGAR CARRITO
@@ -197,19 +195,39 @@ function mostrarResumen() {
 
 
 function eliminarDelCarrito(index) {
-    if (confirm('¿Estás seguro que deseas eliminar esta reserva del carrito?')) {
-        carrito.splice(index, 1);
-        guardarEnStorage('travelar_carrito', carrito);
-        mostrarItems();
-        mostrarResumen();
-        inicializarEventos();
-        mostrarAlerta('Reserva eliminada', 'success');
-    }
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: '¿Deseas eliminar esta reserva del carrito?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            carrito.splice(index, 1);
+            guardarEnStorage('travelar_carrito', carrito);
+            mostrarItems();
+            mostrarResumen();
+            inicializarEventos();
+            mostrarAlerta('Reserva eliminada', 'success');
+        }
+    });
 }
 
 function editarReserva(index) {
-    alert('La funcionalidad de edición te llevará al HERO del inicio para modificar la reserva.');
-    window.location.href = '../index.html';
+    Swal.fire({
+        title: 'Editar Reserva',
+        text: 'Te llevaremos al inicio para que puedas modificar tu reserva.',
+        icon: 'info',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Continuar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = '../index.html';
+        }
+    });
 }
 
 function irAlCheckout() {

@@ -10,12 +10,10 @@ let datosPasajero = {};
 // INICIALIZACIÓN
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    cargarCarrito();
-    inicializarCheckout();
-    mostrarResumen();
-    mostrarResumenLateral();
-});
+cargarCarrito();
+inicializarCheckout();
+mostrarResumen();
+mostrarResumenLateral();
 
 
 // CARGAR CARRITO

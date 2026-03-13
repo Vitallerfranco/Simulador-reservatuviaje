@@ -1,26 +1,22 @@
 //destino card animaciones
-document.addEventListener("DOMContentLoaded", () => {
+const cards = document.querySelectorAll(".destino-card");
 
-    const cards = document.querySelectorAll(".destino-card");
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.classList.add("show");
+            }, index * 150); // efecto escalonado
 
-                setTimeout(() => {
-                    entry.target.classList.add("show");
-                }, index * 150); // efecto escalonado
-
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.2
+            observer.unobserve(entry.target);
+        }
     });
-
-    cards.forEach(card => observer.observe(card));
-
+}, {
+    threshold: 0.2
 });
+
+cards.forEach(card => observer.observe(card));
 
 //testimonios slider
 const historias = document.querySelectorAll('.historia-iguazu');

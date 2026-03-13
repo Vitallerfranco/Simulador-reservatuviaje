@@ -35,9 +35,46 @@ function validarTelefono(telefono) {
 }
 
 function validarFechas(checkin, checkout) {
+    // Retorna objeto con validez y mensaje de error
+    const result = { valido: true, mensaje: '' };
+    
+    if (!checkin || !checkout) {
+        return { valido: false, mensaje: 'Las fechas son requeridas' };
+    }
+    
     const fechaI = new Date(checkin);
     const fechaO = new Date(checkout);
-    return fechaI < fechaO && fechaI > new Date();
+    const hoy = new Date();
+    
+    // Resetear hora para comparar solo fechas
+    hoy.setHours(0, 0, 0, 0);
+    fechaI.setHours(0, 0, 0, 0);
+    fechaO.setHours(0, 0, 0, 0);
+    
+    // Validar que checkin no sea en el pasado
+    if (fechaI < hoy) {
+        return { valido: false, mensaje: 'La fecha de entrada no puede ser anterior a hoy' };
+    }
+    
+    // Validar que checkout sea después de checkin
+    if (fechaO <= fechaI) {
+        return { valido: false, mensaje: 'La fecha de salida debe ser posterior a la entrada' };
+    }
+    
+    // Calcular días de duración
+    const diasDuracion = Math.ceil((fechaO - fechaI) / (1000 * 60 * 60 * 24));
+    
+    // Validar duración mínima (al menos 1 día)
+    if (diasDuracion < 1) {
+        return { valido: false, mensaje: 'La duración mínima es de 1 día' };
+    }
+    
+    // Validar duración máxima (máximo 90 días)
+    if (diasDuracion > 90) {
+        return { valido: false, mensaje: 'La duración máxima es de 90 días' };
+    }
+    
+    return { valido: true, mensaje: '' };
 }
 
 
@@ -460,37 +497,35 @@ function eliminarDelCarrito(index) {
 }
 
 // Conectar botón de carrito en todas las páginas
-document.addEventListener('DOMContentLoaded', () => {
-    actualizarContadorCarrito();
-    renderDrawer();
+actualizarContadorCarrito();
+renderDrawer();
 
-    const abrir = document.getElementById('abrirCarrito');
-    if (abrir) {
-        abrir.addEventListener('click', () => {
-            const drawer = document.getElementById('carritoDrawer');
-            if (drawer) {
-                drawer.classList.add('open');
-                document.body.style.overflow = 'hidden';
-                renderDrawer();
+const abrir = document.getElementById('abrirCarrito');
+if (abrir) {
+    abrir.addEventListener('click', () => {
+        const drawer = document.getElementById('carritoDrawer');
+        if (drawer) {
+            drawer.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            renderDrawer();
+        } else {
+            // redirigir a la página de carrito dependiendo de la ubicación actual
+            if (window.location.pathname.includes('/pages/')) {
+                window.location.href = './carrito.html';
             } else {
-                // redirigir a la página de carrito dependiendo de la ubicación actual
-                if (window.location.pathname.includes('/pages/')) {
-                    window.location.href = './carrito.html';
-                } else {
-                    window.location.href = 'pages/carrito.html';
-                }
+                window.location.href = 'pages/carrito.html';
             }
-        });
-    }
+        }
+    });
+}
 
-    const cerrar = document.getElementById('cerrarDrawer');
-    if (cerrar) {
-        cerrar.addEventListener('click', () => {
-            const drawer = document.getElementById('carritoDrawer');
-            if (drawer) {
-                    drawer.classList.remove('open');
-                    document.body.style.overflow = '';
-                }
-        });
-    }
-});
+const cerrar = document.getElementById('cerrarDrawer');
+if (cerrar) {
+    cerrar.addEventListener('click', () => {
+        const drawer = document.getElementById('carritoDrawer');
+        if (drawer) {
+                drawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+    });
+}

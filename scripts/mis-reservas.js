@@ -1,11 +1,9 @@
 
 let reservas = [];
 
-document.addEventListener('DOMContentLoaded', () => {
-    cargarReservas();
-    mostrarReservas();
-    inicializarEventos();
-});
+cargarReservas();
+mostrarReservas();
+inicializarEventos();
 
 // cargar reservas desde el storage
 
@@ -140,7 +138,13 @@ function descargarPDFReserva(index) {
 
 
 function contactarSoporte() {
-    alert('Te redirigiremos al chat de soporte. Por el momento, contacta a soporte@travelar.com');
+    Swal.fire({
+        title: 'Contactar Soporte',
+        text: 'Te redirigiremos al chat de soporte. Por el momento, contacta a soporte@travelar.com',
+        icon: 'info',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'De acuerdo'
+    });
 }
 
 
